@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="bid" />
+    </Key>
+    <Property Name="bid" Type="int" Nullable="false" />
+    <Property Name="bookname" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="dept">
+    <Key>
+      <PropertyRef Name="deptid" />
+    </Key>
+    <Property Name="deptid" Type="int" Nullable="false" />
+    <Property Name="deptname" Type="varchar" MaxLength="20" />
+    <Property Name="location" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="job">
+    <Key>
+      <PropertyRef Name="jobid" />
+    </Key>
+    <Property Name="jobid" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="job_title" Type="varchar" MaxLength="20" />
+    <Property Name="minsalary" Type="int" />
+    <Property Name="maxsalary" Type="int" />
+  </EntityType>
+  <EntityContainer Name="masterModelStoreContainer">
+    <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dept" EntityType="Self.dept" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="job" EntityType="Self.job" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

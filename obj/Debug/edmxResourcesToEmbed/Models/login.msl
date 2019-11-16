@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
+    <EntitySetMapping Name="books">
+      <EntityTypeMapping TypeName="masterModel.book">
+        <MappingFragment StoreEntitySet="book">
+          <ScalarProperty Name="bid" ColumnName="bid" />
+          <ScalarProperty Name="bookname" ColumnName="bookname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="depts">
+      <EntityTypeMapping TypeName="masterModel.dept">
+        <MappingFragment StoreEntitySet="dept">
+          <ScalarProperty Name="deptid" ColumnName="deptid" />
+          <ScalarProperty Name="deptname" ColumnName="deptname" />
+          <ScalarProperty Name="location" ColumnName="location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobs">
+      <EntityTypeMapping TypeName="masterModel.job">
+        <MappingFragment StoreEntitySet="job">
+          <ScalarProperty Name="jobid" ColumnName="jobid" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="minsalary" ColumnName="minsalary" />
+          <ScalarProperty Name="maxsalary" ColumnName="maxsalary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
