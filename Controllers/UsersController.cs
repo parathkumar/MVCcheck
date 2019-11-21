@@ -25,15 +25,23 @@ namespace Banking.Controllers
         {
             if (ModelState.IsValid)
             {
-                var res = (from s in db.Users
+                var res = (from s in db.Users 
                            where s.UserName == obj.UserName
                            && s.UserPassword == obj.UserPassword
                            select s).SingleOrDefault();
+                var t =  res.RoleID;
                 String uname = res.UserName;
-                Session["User"] = uname;
+                Session["Name"] = uname;
                 if (res != null)
-                {
-                    return RedirectToAction("Index", "Home");
+                  {
+                    if (t == 0) { 
+                        return RedirectToAction("Index", "Home");
+                          }
+                else
+                      {
+                    return RedirectToAction("RegisterCustomer","Register");
+                       }
+
                 }
                 else
                 {
@@ -48,8 +56,7 @@ namespace Banking.Controllers
             return View();
 
         }
-
-        public bool UserExist(string UserName)
+    public bool UserExist(string UserName)
         {
             var res = (from s in db.Users
                        where s.UserName == UserName
@@ -65,50 +72,15 @@ namespace Banking.Controllers
                 Json(true, JsonRequestBehavior.AllowGet)
                 : Json(false, JsonRequestBehavior.AllowGet);
         }
-        //public ActionResult logoff()
-        //{
-        //    Session.Clear();
-        //    Session.Abandon();
-        //    return View();
-        //}
-        [HttpGet]
-        public ActionResult ForgetPass(string id)
+        
+        
+   
+     
+        public ActionResult LogOff()
         {
-            var obj = db.Users.Find(id);
-            return View(obj);
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
-        [HttpPost]
-        public ActionResult ForgetPass(Class1 obj)
-        {
-           
-            db.Entry(obj).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-            //return View();
-            //var res = (from s in db.Users
-            //         where s.UserName == obj.UserName
-            //        select s).SingleOrDefault();
-            ////var obj = db.Users.Find(id);
-            //var m = o.UserPassword;
-            //obj.UserPassword = m;
-            //db.Entry(o).State = EntityState.Modified;
-            //db.SaveChanges();
-            //return RedirectToAction("Index");
-
-        }
-        //[HttpPost]
-        //public ActionResult ForgetPass(User o)
-        //{
-        //    //var k = db.User.Find(obj);
-        //    //return View(obj);
-        //    var res = (from s in db.Users
-        //              where s.UserName == obj.UserName
-        //              select s).SingleOrDefault();
-        //    o.UserPassword = obj.UserPassword;
-        //    db.Entry(res).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-
-        //}
     }
 }

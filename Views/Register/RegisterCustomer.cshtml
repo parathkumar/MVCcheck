@@ -1,16 +1,21 @@
 ﻿@model Banking.User
 
 @{
-    ViewBag.Title = "RegisterCustomer";
+    Layout = null;
 }
 
-<h2>RegisterCustomer</h2>
+<!DOCTYPE html>
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegisterCustomer</title>
+</head>
+<body>
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />
@@ -31,6 +36,15 @@
             </div>
         </div>
 
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.CPwd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CPwd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CPwd, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
         <div class="form-group">
             @Html.LabelFor(model => model.UserTransactionPassword, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -40,12 +54,12 @@
         </div>
 
         @*<div class="form-group">
-                @Html.LabelFor(model => model.RoleID, "RoleID", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("RoleID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+            @Html.LabelFor(model => model.RoleID, "RoleID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("RoleID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.UserPictureURL, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -61,17 +75,10 @@
             </div>
         </div>
     </div>
-}
-@Html.ActionLink("forgetpassword", "ForgetPass", "Users")
-<div></div>
-<div>
-    @Html.ActionLink("Login", "SignIn", "Users")
-
-</div>
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

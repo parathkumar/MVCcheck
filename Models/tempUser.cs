@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
 namespace Banking.Models
 {
-    public class UserLoginVM
+    public class tempUser
     {
         [Key]
-        [RemoteAttribute("IsUserExist", "Users", ErrorMessage = "User Id Does not exist")]
+        public short UserID { get; set; }
         [Display(Name = "LoginId")]
         [Required]
         public string UserName { get; set; }
@@ -18,8 +18,13 @@ namespace Banking.Models
         [DataType(DataType.Password)]
         [Required]
         public string UserPassword { get; set; }
-        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Passwords do not match")]
+        [NotMapped]
+        [Compare("UserPassword", ErrorMessage = "Passwords do not match")]
         [DataType(DataType.Password)]
         public string CPwd { get; set; }
+        public string UserTransactionPassword { get; set; }
+        public Nullable<short> RoleID { get; set; }
+        public string UserPictureURL { get; set; }
+
     }
 }

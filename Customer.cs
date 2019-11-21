@@ -11,7 +11,9 @@ namespace Banking
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Diagnostics.Eventing.Reader;
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,17 +23,38 @@ namespace Banking
             this.TransactionLogs = new HashSet<TransactionLog>();
             this.UserAddresses = new HashSet<UserAddress>();
         }
-    
+     
         public short CustomerID { get; set; }
+        [Required]
+        [Display(Name = "FirstName")]
         public string CustomerFirstName { get; set; }
+        [Display(Name = "LastName")]
         public string CustomerLastName { get; set; }
+        [Display(Name = "Date Of Birth")]
+        [Required]
+        [DataType(DataType.Date)]
         public System.DateTime CustomerDateOfBirth { get; set; }
+        [Display(Name = "Email-Id")]
+        [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
+        [Display(Name = "Mobile Number")]
+        [Required]
         public string CellPhone { get; set; }
+        [Display(Name = "AadhaarNumber")]
+        [Required]
+        
         public string AadhaarNumber { get; set; }
+        
         public short UserID { get; set; }
+        [Display(Name = "Occupation Type")]
+        [Required]
         public string OccupationType { get; set; }
+        [Display(Name = "Source of Income")]
+        [Required]
         public string OccupationSource { get; set; }
+        [Required]
+        [Display(Name = "Income")]
+       
         public Nullable<decimal> OccupationIncome { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

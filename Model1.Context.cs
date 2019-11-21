@@ -42,6 +42,6 @@ namespace Banking
         public virtual DbSet<UserAddress> UserAddresses { get; set; }
         public object User { get; internal set; }
 
-      
+        public System.Data.Entity.DbSet<Banking.Models.tempUser> tempUsers { get; set; }
     }
 }

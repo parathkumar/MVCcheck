@@ -11,7 +11,9 @@ namespace Banking
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +23,17 @@ namespace Banking
         }
        
         public short UserID { get; set; }
+        [Display(Name = "LoginId")]
+        [Required]
         public string UserName { get; set; }
+        [Display(Name = "Password")]
+        [DataType(DataType.Password)]
+        [Required]
         public string UserPassword { get; set; }
+        [NotMapped]
+        [System.ComponentModel.DataAnnotations.Compare("Password")]
+        [DataType(DataType.Password)]
+        public string CPwd { get; set; }
         public string UserTransactionPassword { get; set; }
         public Nullable<short> RoleID { get; set; }
         public string UserPictureURL { get; set; }
